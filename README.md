@@ -7,14 +7,15 @@ Slackでテトリスを遊ぶことができます．
 
 1. https://api.slack.com/bot-users のcreating a new bot userをクリックして新しくBotを作成する
 2. 適当なチャンネルに1.で作成したBotをInviteする
-3. Botを動かすマシンに環境変数をセットする
+3. imgフォルダにあるpngファイルをすべてファイル名をemoji名としてslackに登録する
+4. Botを動かすマシンに環境変数をセットする
 
 ```sh
 $ export SLACK_API_TOKEN=<1.で取得したTOKEN>
 $ export BOT_NAME=<1.で設定したBot Name>
 ```
 
-4. botを起動する
+5. botを起動する
 
 ```sh
 $ git clone https://github.com/cloud-hackathon/slack-tetris.git
@@ -23,7 +24,7 @@ $ pip install -r requirements.txt
 $ python bot.py
 ```
 
-5. テトリスで遊ぶ
+6. テトリスで遊ぶ
 
 # Commands
 
