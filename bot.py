@@ -121,6 +121,7 @@ def turn():
 
 
 def stop():
+  tetris.player = None
   tetris.playing = False
   return True
 
