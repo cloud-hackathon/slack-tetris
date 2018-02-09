@@ -30,10 +30,19 @@ $ cd slack-tetris
 
 ```sh
 $ cf login -a URL -u USER -p PASS
-$ cf push <好きなアプリ名>
+$ cf push <アプリ名>
 ```
 
-7. テトリスで遊ぶ
+7. Cloud FoundryアプリのURLを取得する
+
+```sh
+$ cf app <アプリ名> | grep urls
+urls: tetris-cliquish-dualism.lab3.tamac.me # コピーする
+```
+
+8. SlackのEvent SubscriptionsにURLを登録しSubscribe to Bot EventsにMessageイベント3つを追加する
+
+9. テトリスで遊ぶ
 
 # Commands
 
