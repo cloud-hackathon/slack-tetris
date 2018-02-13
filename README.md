@@ -8,23 +8,41 @@ Slackでテトリスを遊ぶことができます．
 1. https://api.slack.com/bot-users のcreating a new bot userをクリックして新しくBotを作成する
 2. 適当なチャンネルに1.で作成したBotをInviteする
 3. imgフォルダにあるpngファイルをすべてファイル名をemoji名としてslackに登録する
-4. Botを動かすマシンに環境変数をセットする
-
-```sh
-$ export SLACK_API_TOKEN=<1.で取得したTOKEN>
-$ export BOT_NAME=<1.で設定したBot Name>
-```
-
-5. botを起動する
+4. Botを取得する
 
 ```sh
 $ git clone https://github.com/cloud-hackathon/slack-tetris.git
 $ cd slack-tetris
-$ pip install -r requirements.txt
-$ python bot.py
 ```
 
-6. テトリスで遊ぶ
+5. 取得したslack-tetrisディレクトリのmanifest.ymlに環境変数を追加する
+
+```yaml
+---
+  ...
+  env:
+    SLACK_API_TOKEN: <1.のOAuth & Permissionsに書いてあるBot User OAuth Access Token>
+    SLACK_VERIFICATION_TOKEN: <1.のBasic Informationに書いてあるVerification Token>
+    BOT_NAME: <Bot名>
+```
+
+6. Cloud FoundryにBotをPushする
+
+```sh
+$ cf login -a URL -u USER -p PASS
+$ cf push <アプリ名>
+```
+
+7. Cloud FoundryアプリのURLを取得する
+
+```sh
+$ cf app <アプリ名> | grep urls
+urls: tetris-cliquish-dualism.lab3.tamac.me # コピーする
+```
+
+8. SlackのEvent SubscriptionsにURLを登録しSubscribe to Bot EventsにMessageイベント3つを追加する
+
+9. テトリスで遊ぶ
 
 # Commands
 
@@ -47,6 +65,9 @@ stop: テトリスを終了
 
 # Reference
 
+* https://api.slack.com/apps
 * http://euphorie.sakura.ne.jp/junk/page_python_teto.html
 * http://slackapi.github.io/python-slackclient/index.html
+* https://github.com/slackapi/python-slack-events-api
+* https://www.cloudfoundry.org/
 * https://www.flaticon.com/

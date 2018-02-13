@@ -1,0 +1,8 @@
+---
+applications:
+- memory: 128MB
+  disk_quota: 256MB
+  env:
+    SLACK_API_TOKEN: 
+    SLACK_VERIFICATION_TOKEN: 
+    BOT_NAME: 
